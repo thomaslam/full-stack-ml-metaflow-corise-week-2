@@ -103,9 +103,9 @@ class BaselineChallenge(FlowSpec):
             model = NbowModel(params['vocab_sz'])
             model.fit(X=self.df["review"], y=self.df["label"])
             # TODO: evaluate your custom model in an equivalent way to accuracy_score.
-            acc = model.eval_acc(X=self.valdf['review'], labels=self.valdf['label'])
+            acc = model.eval_acc(X=self.valdf['review'].values, labels=self.valdf['label'])
             # TODO: evaluate your custom model in an equivalent way to roc_auc_score.
-            rocauc = model.eval_rocauc(X=self.valdf['review'], labels=self.valdf['label'])
+            rocauc = model.eval_rocauc(X=self.valdf['review'].values, labels=self.valdf['label'])
             self.results.append(
                 ModelResult(
                     f"NbowModel - vocab_sz: {params['vocab_sz']}",
